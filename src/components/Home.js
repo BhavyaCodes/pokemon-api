@@ -15,7 +15,7 @@ export default class Home extends Component {
 
 	async componentDidMount(){
 		const res = await pokeApi.get(`/pokemon?offset=${this.state.offset}&limit=${limit}`)
-		this.setState(st=>({offset: st.offset+limit, pokemon:[...st.pokemon, res.data.results][0]}))
+		this.setState(st=>({offset: st.offset+limit, pokemon:[...st.pokemon, ...res.data.results]}))
 	}
 
 	renderPokemon(){
@@ -24,14 +24,17 @@ export default class Home extends Component {
 
 	async getMorePokemon(){
 		const res = await pokeApi.get(`/pokemon?offset=${this.state.offset}&limit=${limit}`)
-		this.setState(st=>({offset: st.offset+limit, pokemon:[...st.pokemon, res.data.results][0]}))
+		console.log(res.data)
+		this.setState(st=>({offset: st.offset + limit, pokemon: [...st.pokemon, ...res.data.results]}))
 	}
 
 	render() {
 		return (
-			<div>
-				{this.renderPokemon()}
-				<button onClick={this.getMorePokemon}>Get More</button>
+			<div className="container">
+				<div className="card-columns">
+					{this.renderPokemon()}
+					<button onClick={this.getMorePokemon}>Get More</button>
+				</div>
 			</div>
 		)
 	}
