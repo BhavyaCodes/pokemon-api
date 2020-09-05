@@ -1,0 +1,33 @@
+.Spinner{
+	background-color: blue;
+	display: flex;
+	justify-content: center;
+	padding: 10px;
+}
+
+.Spinner img{
+	height: 30px;
+	animation-name: spin;
+  animation-duration: 0.7s;
+  animation-timing-function: ease-in-out;
+	animation-delay: 0s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  30% {
+    transform: rotate(20deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  }
+  80% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
