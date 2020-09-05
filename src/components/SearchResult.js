@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import Pokemon from './Pokemon'
+import BigPokemon from './BigPokemon'
 
 export default class SearchResult extends Component {
 
@@ -12,7 +12,7 @@ export default class SearchResult extends Component {
 	render() {
 		return (
 			<div className="container">
-				<Pokemon url={`https://pokeapi.co/api/v2/pokemon/${this.props.match.params.searchTerm}`} />
+				<BigPokemon url={`https://pokeapi.co/api/v2/pokemon/${this.props.match.params.searchTerm}`} />
 			</div>
 		)
 	}

@@ -17,11 +17,6 @@ export default class Pokemon extends Component {
 		this.setState({data: res.data,imageUrl: res.data.sprites.other.dream_world.front_default})
 	}
 
-	async componentDidUpdate(){
-		const res = await axios.get(this.props.url)
-		this.setState({data: res.data,imageUrl: res.data.sprites.other.dream_world.front_default})
-	}
-
 	renderTypes(){
 		if(this.state.data.types){
 			return this.state.data.types.map(type=>{

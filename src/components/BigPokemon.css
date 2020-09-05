@@ -1,0 +1,5 @@
+@media (min-width: 800px){
+	.BigPokemon .list-group{
+		width: 50%;
+	}
+}
