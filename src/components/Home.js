@@ -38,7 +38,7 @@ export default class Home extends Component {
 					{this.renderPokemon()}
 				</div>
 				{this.state.isLoading && <Spinner />}
-				<button onClick={this.getMorePokemon} type="button" class="my-3 btn btn-primary btn-lg">Get More</button>
+				<button onClick={this.getMorePokemon} type="button" class="my-3 btn btn-danger btn-lg">Get More</button>
 			</div>
 		)
 	}

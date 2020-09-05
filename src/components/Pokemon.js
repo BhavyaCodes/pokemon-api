@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from "react-router-dom";
 import axios from 'axios'
 
 import PokemonType from './PokemonType'
@@ -28,14 +29,18 @@ export default class Pokemon extends Component {
 	render() {
 		if(this.state.imageUrl){
 			return (
-				<div class="col mb-4">
-					<div className="Pokemon card">
-						<img className="card-img-top" src={this.state.imageUrl} alt={this.props.name} />
-						<div className="card-body">
-							<h5 className="card-title">{this.state.data.species.name}</h5>
-							<p className="card-text">{this.renderTypes()}</p>
+				<div className="Pokemon">
+					<Link to={`/pokemon/${this.state.data.species.name}`}>
+						<div class="col mb-4">
+							<div className="card">
+								<img className="card-img-top" src={this.state.imageUrl} alt={this.props.name} />
+								<div className="card-body mt-2">
+									<h5 className="card-title">{this.state.data.species.name}</h5>
+									<p className="card-text">{this.renderTypes()}</p>
+								</div>
+							</div>
 						</div>
-					</div>
+					</Link>
 				</div>
 			)
 		}

@@ -1,3 +1,16 @@
 .Pokemon img{
 	max-height: 250px;
 }
+
+.Pokemon a:hover{
+	text-decoration: none;
+}
+
+.Pokemon .card-body{
+	background-color: rgb(255, 126, 117);
+	color: white;
+}
+
+.Pokemon h5{
+	font-weight: bold;
+}
