@@ -16,7 +16,7 @@ class Navbar extends Component {
 
 	onFormSubmit(e){
 		e.preventDefault()
-		this.props.history.push(`/search/${this.state.term}`);
+		this.props.history.push(`/pokemon/${this.state.term.toLowerCase()}`);
 	}
 
 	render() {

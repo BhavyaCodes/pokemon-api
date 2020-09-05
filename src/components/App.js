@@ -11,7 +11,7 @@ function App() {
       <Navbar />
       <Switch>
         <Route path="/" exact render={(renderProps)=><Home {...renderProps}/>} />
-        <Route path="/search/:searchTerm" component={SearchResult} />
+        <Route path="/pokemon/:searchTerm" component={SearchResult} />
         <Route render={()=>(<h2>404</h2>)} />
       </Switch>
     </div>
