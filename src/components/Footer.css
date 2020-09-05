@@ -1,5 +1,24 @@
-.Footer *{
+.Footer {
 	background-color: #f8f9fb;
 	padding: 0 0;
-	margin: 0 0;
+	margin: 10px 0;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.Footer-links{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+.Footer p{
+	margin: 5px 15px;
+}
+
+
+
+.Footer img{
+	width: 15%;
+	margin: 5px 15px;
 }
