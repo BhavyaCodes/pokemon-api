@@ -33,8 +33,8 @@ export default class Home extends Component {
 			<div className="container">
 				<div className="card-columns">
 					{this.renderPokemon()}
-					<button onClick={this.getMorePokemon}>Get More</button>
 				</div>
+				<button onClick={this.getMorePokemon} type="button" class="my-3 btn btn-primary btn-lg">Get More</button>
 			</div>
 		)
 	}

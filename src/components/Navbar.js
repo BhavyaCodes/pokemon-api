@@ -28,12 +28,6 @@ class Navbar extends Component {
   			</button>
 				<div className="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul className="navbar-nav mr-auto">
-						<li className="nav-item active">
-							<NavLink className="nav-link" to="#">Home <span className="sr-only">(current)</span></NavLink>
-						</li>
-						<li className="nav-item">
-							<NavLink className="nav-link" to="#">NavLink</NavLink>
-						</li>
 					</ul>
 					<form onSubmit={this.onFormSubmit} className="form-inline my-2 my-lg-0">
 						<input
