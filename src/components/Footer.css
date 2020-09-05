@@ -1,7 +1,7 @@
 .Footer {
 	background-color: #f8f9fb;
 	padding: 0 0;
-	margin: 10px 0;
+	margin: 10px 0 0 0;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -16,9 +16,20 @@
 	margin: 5px 15px;
 }
 
-
+.Footer .image-div{
+	text-align: end;
+}
 
 .Footer img{
-	width: 15%;
-	margin: 5px 15px;
+	height: 100px;
+}
+
+@media(max-width: 768px){
+	.Footer .image-div{
+		text-align: center;
+	}
+	.Footer img{
+		width: 100%;
+		height: auto;
+	}
 }
