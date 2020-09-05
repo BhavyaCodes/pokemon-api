@@ -3,7 +3,7 @@ import Pokemon from './Pokemon'
 
 import pokeApi from '../api/pokeApi'
 
-const limit=10
+const limit=9
 
 export default class Home extends Component {
 	constructor(props){
@@ -30,8 +30,8 @@ export default class Home extends Component {
 
 	render() {
 		return (
-			<div className="container">
-				<div className="card-columns">
+			<div className="container my-4">
+				<div className="row row-cols-1 row-cols-md-2 row-cols-lg-3">
 					{this.renderPokemon()}
 				</div>
 				<button onClick={this.getMorePokemon} type="button" class="my-3 btn btn-primary btn-lg">Get More</button>

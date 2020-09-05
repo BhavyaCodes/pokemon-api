@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+import pokeApi from '../api/pokeApi'
 
 import PokemonType from './PokemonType'
 import './BigPokemon.css'
@@ -16,7 +16,7 @@ export default class Pokemon extends Component {
 
 	async componentDidMount(){
 		try {
-			const res = await axios.get(this.props.url)
+			const res = await pokeApi.get(`/pokemon/${this.props.match.params.searchTerm}`)
 			this.setState({data: res.data,imageUrl: res.data.sprites.other.dream_world.front_default, isLoading: false, error: false})	
 		} catch (error) {
 			this.setState({error: true, isLoading: false})
@@ -24,10 +24,10 @@ export default class Pokemon extends Component {
 	}
 
 	async componentDidUpdate(prevProps, prevState){
-		if (prevProps.url !== this.props.url){
+		if (prevProps.match.params.searchTerm !== this.props.match.params.searchTerm){
 			try {
 				this.setState({isLoading: true})
-				const res = await axios.get(this.props.url)
+				const res = await pokeApi.get(`/pokemon/${this.props.match.params.searchTerm}`)
 				this.setState({data: res.data,imageUrl: res.data.sprites.other.dream_world.front_default, isLoading: false, error: false})	
 			} catch (error) {
 				this.setState({error: true, isLoading: false})
@@ -58,9 +58,9 @@ export default class Pokemon extends Component {
 	render() {
 		if(this.state.isLoading){
 			return (
-				<div class="d-flex justify-content-center">
-					<div class="spinner-border" role="status">
-						<span class="sr-only">Loading...</span>
+				<div className="d-flex justify-content-center">
+					<div className="spinner-border" role="status">
+						<span className="sr-only">Loading...</span>
 					</div>
 				</div>
 		)
@@ -71,44 +71,46 @@ export default class Pokemon extends Component {
 			)
 		}
 			return(
-				<div className="BigPokemon card mb-3">
-					<div className="row no-gutters">
-							<div className="col-md-4">
-								<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-									<ol class="carousel-indicators">
-										<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-										<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-										<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-									</ol>
-									<div class="carousel-inner">
-										<div class="carousel-item active">
-											<img src={this.state.data.sprites.other.dream_world.front_default} class="d-block w-100" alt="..." />
+				<div className="container">
+					<div className="BigPokemon card mb-3">
+						<div className="row no-gutters">
+								<div className="col-md-4">
+									<div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
+										<ol className="carousel-indicators">
+											<li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
+											<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+											<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+										</ol>
+										<div className="carousel-inner">
+											<div className="carousel-item active">
+												<img src={this.state.data.sprites.other.dream_world.front_default} className="d-block w-100" alt="..." />
+											</div>
+											<div className="carousel-item">
+												<img src={this.state.data.sprites.front_default} className="d-block w-100" alt="front_default" />
+											</div>
+											<div className="carousel-item">
+												<img src={this.state.data.sprites.back_default} className="d-block w-100" alt="back_default" />
+											</div>
 										</div>
-										<div class="carousel-item">
-											<img src={this.state.data.sprites.front_default} class="d-block w-100" alt="front_default" />
-										</div>
-										<div class="carousel-item">
-											<img src={this.state.data.sprites.back_default} class="d-block w-100" alt="back_default" />
-										</div>
+										<a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+											<span className="carousel-control-prev-icon" aria-hidden="true"></span>
+											<span className="sr-only">Previous</span>
+										</a>
+										<a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+											<span className="carousel-control-next-icon" aria-hidden="true"></span>
+											<span className="sr-only">Next</span>
+										</a>
 									</div>
-									<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-										<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-										<span class="sr-only">Previous</span>
-									</a>
-									<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-										<span class="carousel-control-next-icon" aria-hidden="true"></span>
-										<span class="sr-only">Next</span>
-									</a>
+							</div>
+							<div className="col-md-8">
+								<div className="card-body">
+									<h2 className="card-title">{this.state.data.species.name}</h2>
+										<ul className="list-group my-3">
+											<li className="list-group-item active">Abilities</li>
+											{this.renderAbilities()}
+										</ul>
+									<p className="card-text my-3">{this.renderTypes()}</p>
 								</div>
-						</div>
-						<div className="col-md-8">
-							<div className="card-body">
-								<h2 className="card-title">{this.state.data.species.name}</h2>
-									<ul className="list-group my-3">
-										<li className="list-group-item active"><storng>Abilities</storng></li>
-										{this.renderAbilities()}
-									</ul>
-								<p className="card-text my-3">{this.renderTypes()}</p>
 							</div>
 						</div>
 					</div>

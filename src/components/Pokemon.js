@@ -28,11 +28,13 @@ export default class Pokemon extends Component {
 	render() {
 		if(this.state.imageUrl){
 			return (
-				<div className="Pokemon card">
-					<img className="card-img-top" src={this.state.imageUrl} alt={this.props.name} />
-					<div className="card-body">
-						<h5 className="card-title">{this.state.data.species.name}</h5>
-						<p className="card-text">{this.renderTypes()}</p>
+				<div class="col mb-4">
+					<div className="Pokemon card">
+						<img className="card-img-top" src={this.state.imageUrl} alt={this.props.name} />
+						<div className="card-body">
+							<h5 className="card-title">{this.state.data.species.name}</h5>
+							<p className="card-text">{this.renderTypes()}</p>
+						</div>
 					</div>
 				</div>
 			)
