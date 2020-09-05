@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import pokeApi from '../api/pokeApi'
 
 import PokemonType from './PokemonType'
+import Spinner from './Spinner'
 import './BigPokemon.css'
 
 export default class Pokemon extends Component {
@@ -57,13 +58,7 @@ export default class Pokemon extends Component {
 
 	render() {
 		if(this.state.isLoading){
-			return (
-				<div className="d-flex justify-content-center">
-					<div className="spinner-border" role="status">
-						<span className="sr-only">Loading...</span>
-					</div>
-				</div>
-		)
+			return <Spinner />
 		}
 		if(this.state.error){
 			return(

@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import {NavLink, withRouter} from 'react-router-dom'
 
+import logo from '../pokemon-logo.png'
+import './Navbar.css'
+
 class Navbar extends Component {
 
 	constructor(props){
@@ -22,7 +25,7 @@ class Navbar extends Component {
 	render() {
 		return (
 			<nav className="navbar navbar-expand-lg navbar-light bg-light">
-  			<NavLink className="navbar-brand" to="/">Pokemon</NavLink>
+  			<NavLink className="navbar-brand" to="/"><img className="logo-img" src={logo} alt="pokemon logo"></img></NavLink>
   			<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     			<span className="navbar-toggler-icon"></span>
   			</button>
@@ -39,7 +42,7 @@ class Navbar extends Component {
 							onChange={this.handleInputChange}
 							name="term"
 						/>
-						<button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+						<button className="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
 					</form>
 				</div>
 			</nav>
