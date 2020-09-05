@@ -19,7 +19,7 @@ export default class Home extends Component {
 	}
 
 	renderPokemon(){
-		return this.state.pokemon.map(pokemon=>(<Pokemon key={pokemon.name} name={pokemon.name} url={pokemon.url} />))
+		return this.state.pokemon.map(pokemon=>(<Pokemon key={pokemon.name} url={pokemon.url} />))
 	}
 
 	async getMorePokemon(){

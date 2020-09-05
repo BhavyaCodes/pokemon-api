@@ -2,11 +2,14 @@ import React, { Component } from 'react'
 
 export default class PokemonType extends Component {
 
-	static defaultProps = {type: 'xyz'}
+	static defaultProps = {type: null}
 
 	render() {
+		if (!this.props.type){
+			return null
+		}
 		return (
-			<span class="badge badge-pill badge-info mx-1">{this.props.type}</span>
+			<span className="badge badge-pill badge-info mx-1">{this.props.type}</span>
 		)
 	}
 }

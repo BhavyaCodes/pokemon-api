@@ -17,25 +17,31 @@ export default class Pokemon extends Component {
 		this.setState({data: res.data,imageUrl: res.data.sprites.other.dream_world.front_default})
 	}
 
+	async componentDidUpdate(){
+		const res = await axios.get(this.props.url)
+		this.setState({data: res.data,imageUrl: res.data.sprites.other.dream_world.front_default})
+	}
+
 	renderTypes(){
 		if(this.state.data.types){
-			console.log(this.state.data.types)
 			return this.state.data.types.map(type=>{
-				// return (<PokemonType type="xyz" />)
-				return (<PokemonType type={type.type.name}/>)
+				return (<PokemonType key={type.type.name} type={type.type.name}/>)
 			})
 		}
 	}
 
 	render() {
-		return (
-			<div className="Pokemon card">
-				{this.state.imageUrl && <img className="card-img-top" src={this.state.imageUrl} alt={this.props.name} />}
-				<div className="card-body">
-					<h5 className="card-title">{this.props.name}</h5>
-					<p className="card-text">{this.renderTypes()}</p>
+		if(this.state.imageUrl){
+			return (
+				<div className="Pokemon card">
+					<img className="card-img-top" src={this.state.imageUrl} alt={this.props.name} />
+					<div className="card-body">
+						<h5 className="card-title">{this.state.data.species.name}</h5>
+						<p className="card-text">{this.renderTypes()}</p>
+					</div>
 				</div>
-			</div>
-		)
+			)
+		}
+		return null
 	}
 }
